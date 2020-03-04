@@ -1,12 +1,10 @@
 Name:           jna
 Version:        4.5.1
-Release:        5
+Release:        6
 Summary:        Pure Java access to native libraries
 License:        (LGPLv2 or ASL 2.0) and ASL 2.0
 URL:            https://github.com/java-native-access/jna/
-Source0:        jna-%{version}-clean.tar.xz
-Source1:        package-list
-Source2:        generate-tarball.sh
+Source0:        https://github.com/java-native-access/jna/archive/4.5.1.tar.gz
 
 Patch0000:      0001-Adapt-build.patch
 Patch0001:      0002-Load-system-library.patch
@@ -68,5 +66,8 @@ install -D -m 755 build/native*/libjnidispatch.so %{buildroot}%{_libdir}/jna/lib
 %doc README.md CHANGES.md
 
 %changelog
+* Tue Mar 3 2020 chenli <chenli147@huawei.com> - 4.5.1-6
+- Modify Source0.
+
 * Fri Nov 22 2019 sunguoshuai <sunguoshuai@huawei.com> - 4.5.1-5
 - Package init.
