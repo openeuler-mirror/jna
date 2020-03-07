@@ -1,24 +1,31 @@
 Name:           jna
 Version:        4.5.1
-Release:        5
+Release:        6
 Summary:        Pure Java access to native libraries
 License:        (LGPLv2 or ASL 2.0) and ASL 2.0
 URL:            https://github.com/java-native-access/jna/
-Source0:        jna-%{version}-clean.tar.xz
+Source0:        https://github.com/java-native-access/jna/archive/4.5.1.tar.gz
+# Package list for prebuild
 Source1:        package-list
-Source2:        generate-tarball.sh
-
+# Add RPM_LD_FLAGS for adapt build
 Patch0000:      0001-Adapt-build.patch
+# MODIFIED FROM UPSTREAM - we rip out all sorts of gunk here that is
+# unnecessary when JNA is properly installed with the OS.
 Patch0001:      0002-Load-system-library.patch
+# The X11 tests currently segfault; overall I think the X11 JNA stuff is just a
+# Really Bad Idea, for relying on AWT internals, using the X11 API at all,
+# and using a complex API like X11 through JNA just increases the potential
+# for problems.
 Patch0002:      0003-Tests-headless.patch
+# Adds --allow-script-in-comments arg to javadoc to avoid error
 Patch0003:      0004-Fix-javadoc-build.patch
+# Avoid generating duplicate manifest entry
 Patch0004:      0005-Fix-duplicate-manifest-entry.patch
+# Remove Werror flag for build
 Patch0005:      0006-Remove-Werror.patch
-
 BuildRequires:  make javapackages-local libffi-devel ant ant-junit
 BuildRequires:  junit libX11-devel libXt-devel reflections
 Requires:       libffi
-
 Provides:       jna-contrib = %{version}-%{release}
 Obsoletes:      jna-contrib < %{version}-%{release}
 
@@ -68,5 +75,8 @@ install -D -m 755 build/native*/libjnidispatch.so %{buildroot}%{_libdir}/jna/lib
 %doc README.md CHANGES.md
 
 %changelog
+* Tue Mar 3 2020 chenli <chenli147@huawei.com> - 4.5.1-6
+- Fixed URL
+
 * Fri Nov 22 2019 sunguoshuai <sunguoshuai@huawei.com> - 4.5.1-5
 - Package init.
