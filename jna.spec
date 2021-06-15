@@ -1,6 +1,6 @@
 Name:           jna
 Version:        4.5.1
-Release:        6
+Release:        7
 Summary:        Pure Java access to native libraries
 License:        (LGPLv2 or ASL 2.0) and ASL 2.0
 URL:            https://github.com/java-native-access/jna/
@@ -23,7 +23,7 @@ Patch0003:      0004-Fix-javadoc-build.patch
 Patch0004:      0005-Fix-duplicate-manifest-entry.patch
 # Remove Werror flag for build
 Patch0005:      0006-Remove-Werror.patch
-BuildRequires:  make javapackages-local libffi-devel ant ant-junit
+BuildRequires:  make javapackages-local libffi-devel ant ant-junit gcc
 BuildRequires:  junit libX11-devel libXt-devel reflections
 Requires:       libffi
 Provides:       jna-contrib = %{version}-%{release}
@@ -75,6 +75,9 @@ install -D -m 755 build/native*/libjnidispatch.so %{buildroot}%{_libdir}/jna/lib
 %doc README.md CHANGES.md
 
 %changelog
+* Wed Jun 2 2021 wulei <wulei80@huawei.com> - 4.5.1-7
+- fixes failed: gcc: command not found
+
 * Tue Mar 3 2020 chenli <chenli147@huawei.com> - 4.5.1-6
 - Fixed URL
 
