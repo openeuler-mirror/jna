@@ -1,6 +1,6 @@
 Name:           jna
 Version:        4.5.1
-Release:        7
+Release:        8
 Summary:        Pure Java access to native libraries
 License:        (LGPLv2 or ASL 2.0) and ASL 2.0
 URL:            https://github.com/java-native-access/jna/
@@ -75,6 +75,9 @@ install -D -m 755 build/native*/libjnidispatch.so %{buildroot}%{_libdir}/jna/lib
 %doc README.md CHANGES.md
 
 %changelog
+* Tue Jan 17 2023 caodongxia <caodongxia@h-partners.com> - 4.5.1-8
+- Add source package-list
+
 * Wed Jun 2 2021 wulei <wulei80@huawei.com> - 4.5.1-7
 - fixes failed: gcc: command not found
 
