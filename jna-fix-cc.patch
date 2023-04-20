@@ -1,0 +1,11 @@
+--- a/native/Makefile	2017-12-28 03:27:16.000000000 +0800
++++ b/native/Makefile	2023-04-20 17:30:42.748105531 +0800
+@@ -81,7 +81,7 @@
+ LIBSFX=.so
+ ARSFX=.a
+ JNISFX=$(LIBSFX)
+-CC=gcc
++CC?=gcc
+ LD=$(CC)
+ LIBS=
+ # Default to Sun recommendations for JNI compilation

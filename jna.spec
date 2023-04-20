@@ -1,6 +1,6 @@
 Name:           jna
 Version:        4.5.1
-Release:        8
+Release:        9
 Summary:        Pure Java access to native libraries
 License:        (LGPLv2 or ASL 2.0) and ASL 2.0
 URL:            https://github.com/java-native-access/jna/
@@ -23,6 +23,7 @@ Patch0003:      0004-Fix-javadoc-build.patch
 Patch0004:      0005-Fix-duplicate-manifest-entry.patch
 # Remove Werror flag for build
 Patch0005:      0006-Remove-Werror.patch
+Patch0006:      jna-fix-cc.patch
 BuildRequires:  make javapackages-local libffi-devel ant ant-junit gcc
 BuildRequires:  junit libX11-devel libXt-devel reflections
 Requires:       libffi
@@ -75,6 +76,9 @@ install -D -m 755 build/native*/libjnidispatch.so %{buildroot}%{_libdir}/jna/lib
 %doc README.md CHANGES.md
 
 %changelog
+* Thu Apr 20 2023 Xiaoya Huang <huangxiaoya@iscas.ac.cn> - 4.5.1-9
+- Fix CC compiler support
+
 * Tue Jan 17 2023 caodongxia <caodongxia@h-partners.com> - 4.5.1-8
 - Add source package-list
 
